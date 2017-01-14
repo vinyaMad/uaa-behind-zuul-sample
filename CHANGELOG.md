@@ -1,7 +1,8 @@
 # Change Log
 
 All notable changes to this project will be documented in this file.
-
+## [0.0.3 vinyaMad fork]
+- validate user credentials in a remote Oauth2 server (google, but that could be changed)
 ## [0.0.3]
 
 ### Added
