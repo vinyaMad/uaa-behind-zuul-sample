@@ -18,7 +18,7 @@ First, state that sorry for any mistakes. English is not my native language.
 
 I have tested this using kakawait's maven's way, if somebody else wants check if it works using the docker's way, feel free to report your findings. 
 
-Before starting, you will need to setup a [Google Oauth2 app](https://developers.google.com/identity/protocols/OAuth2) using [Google API Console](https://console.developers.google.com/)
+Before starting, you will need to setup a [Google Oauth2 app](https://developers.google.com/identity/protocols/OAuth2) using [Google API Console](https://console.developers.google.com/). Once that is done, upload your local copy of '/uaa-service/src/main/resources/application.yml' replacing the entries for google.client.clientID and google.client.clientSecret with the correct values generated in the Google API Console.  
 
 Once this is setup, on each service folder run following command:
 
