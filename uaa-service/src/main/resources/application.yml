@@ -35,8 +35,8 @@ facebook:
     userInfoUri: https://graph.facebook.com/me
 google:
   client:
-    clientId: 826681364960-mrv96pg7egt7llv161fv5pe6j5abcpgv.apps.googleusercontent.com
-    clientSecret: Tg3AL3px97wLofD0vKg1KvmF
+    clientId: <your client ID>
+    clientSecret: <your client secret>
     accessTokenUri: https://www.googleapis.com/oauth2/v3/token
     userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
     clientAuthenticationScheme: form
