@@ -14,7 +14,9 @@ See [kakawait's  POC](https://github.com/kakawait/uaa-behind-zuul-sample) for ba
 
 ## Usage
 
-I have bit tested this using kakawait's docker way, if somebody else wants to do so, feel free to report your findings. 
+First, state that sorry for any mistakes. English is not my native language.
+
+I have tested this using kakawait's maven's way, if somebody else wants check if it works using the docker's way, feel free to report your findings. 
 
 Before starting, you will need to setup a [Google Oauth2 app](https://developers.google.com/identity/protocols/OAuth2) using [Google API Console](https://console.developers.google.com/)
 
