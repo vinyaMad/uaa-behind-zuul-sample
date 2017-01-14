@@ -1,11 +1,15 @@
 spring:
   application:
     name: uaa-service
+
+# Define the port where the UAA server would be running
 server:
-  port: 8080
+  port: 8769
+  # Use different context-path to avoid session cookie overlapping
   context-path: /uaa
   use-forward-headers: false
 
+# Define the Eureka server that handles service registration
 eureka:
   instance:
       hostname: localhost
@@ -14,7 +18,9 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
+# Define security
 security:
+<<<<<<< master
   oauth2:
     client:
       client-id: acme
@@ -44,9 +50,27 @@ google:
   resource:
     userInfoUri: https://www.googleapis.com/plus/v1/people/me
     preferTokenInfo: false
+=======
+  basic:
+    enabled: false
+  user:
+    password: password
+  ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+>>>>>>> 0526111 Oauth2 with external server behind zuul
 
 logging:
-  level:
-    org.springframework.security: DEBUG
-app:
-  defaultReturnUri: http://localhost:8765/uaa/    
+  level.org.springframework.security: DEBUG
+
+---
+spring:
+  profiles: docker
+
+server:
+  port: ${SERVICE_PORT}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: ${REGISTRY_URL}
