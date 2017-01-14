@@ -1,15 +1,11 @@
 spring:
   application:
     name: uaa-service
-
-# Define the port where the UAA server would be running
 server:
-  port: 8769
-  # Use different context-path to avoid session cookie overlapping
+  port: 8080
   context-path: /uaa
   use-forward-headers: false
 
-# Define the Eureka server that handles service registration
 eureka:
   instance:
       hostname: localhost
@@ -18,27 +14,39 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
-# Define security
 security:
-  basic:
-    enabled: false
-  user:
-    password: password
-  ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acmesecret
+      scope: read,write
+      auto-approve-scopes: '.*'
+
+facebook:
+  client:
+    clientId: 233668646673605
+    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+google:
+  client:
+    clientId: 826681364960-mrv96pg7egt7llv161fv5pe6j5abcpgv.apps.googleusercontent.com
+    clientSecret: Tg3AL3px97wLofD0vKg1KvmF
+    accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+    clientAuthenticationScheme: form
+    scope: profile email
+  resource:
+    userInfoUri: https://www.googleapis.com/plus/v1/people/me
+    preferTokenInfo: false
 
 logging:
-  level.org.springframework.security: DEBUG
-
----
-spring:
-  profiles: docker
-
-server:
-  port: ${SERVICE_PORT}
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: ${REGISTRY_URL}
+  level:
+    org.springframework.security: DEBUG
+app:
+  defaultReturnUri: http://localhost:8765/uaa/    
